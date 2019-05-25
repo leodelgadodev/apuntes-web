@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flexbox</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700i,800" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+    <main id="main-doc">
+
+        <nav id="navbar"><header>FlexBox</header>
+        <a href="#Display:_&#128170" class="nav-link">Display: &#128170</a>
+        <a href="#Flex-wrap" class="nav-link">Flex-wrap</a>
+        <a href="#Flex-shrink_Flex-grow" class="nav-link">Flex-shrink Flex-grow</a>
+        <a href="#Flex-direction" class="nav-link">Flex-direction</a>
+        <a href="#Justify-content" class="nav-link">Justify-content</a>
+        <a href="#Align-items" class="nav-link">Align-items</a>
+        <a href="#Align-content" class="nav-link">Align-content</a>
+        <a href="#Order_Align-self" class="nav-link">Order Align-self</a>
+        </nav>
+
+        <hr>
+    <div class="sections">
+        <section class="main-section" id="Display:_&#128170">
+            <header><h2>Display: &#128170</h2></header>
+            <div class="container-section">
+            <div class="container-text">
+            <p><code>Display: flex</code> asigna el display a la box model actual, por eso siempre se asigna al container de los elementos que queremos que se vuelvan flexibles.</p>
+            <ul>
+                <li>Para que los elementos internos se muestren correctamente, mínimo debo definir un <code>width</code> o un <code>max-width</code>.</li>
+                <li>Para modificar el tamaño de los elementos internos (o qué tanto se estiran en la flexbox), hacerlo con <code>padding</code> o con <code>width/height</code>.</li>
+                <li>El display debe estar definido para poder usar <code>todas</code> las funciones de flex.</li>
+            </ul>
+        
+        </div>
+
+            <code class="container-code">
+                <div class="code-class">.container-flex</div> {<br>
+                <div class="code-atr">border:</div> 1px solid red;<br>
+                <div class="code-atr">display:</div> flex;<br>
+                }<br>
+                <br>
+                <div class="code-class">.box</div> {<br>
+                    <div class="code-atr">margin:</div> 5px;<br>
+                    <div class="code-atr">width:</div> 25%;<br>
+                    <div class="code-atr">background-color:</div> var(--second-color);<br>
+                }
+            </code>
+            </div>
+
+                <div class="container-flex">
+                        <div class="box">1</div>
+                        <div class="box">2</div>
+                        <div class="box">3</div>
+                </div>
+        </section>
+
+        <hr>
+
+        <section class="main-section" id="Flex-wrap">
+            <header><h2>Flex-wrap</h2></header>
+                <div class="container-section">
+                    <div class="container-text">
+                        <p><code>flex-wrap</code> modifica si cuando al cambiar el tamaño del viewport los elementos siguen en la misma línea o pasan a la siguiente línea. Por defecto está en <code>nowrap</code>.</p>
+                        <ul>
+                            <li>Para ver cómo funciona, estirar o encoger la página.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>flex-wrap: wrap;</h3>
+                <div class="container-wrap-1">
+                        <div class="box">1</div>
+                        <div class="box">2</div>
+                        <div class="box">3</div>
+                        <div class="box">4</div>
+                        <div class="box">5</div>
+                        <div class="box">6</div>
+                        <div class="box">7</div>
+                    </div>
+
+                <h3>flex-wrap: wrap-reverse;</h3>
+                <div class="container-wrap-2">
+                        
+                            <div class="box">1</div>
+                            <div class="box">2</div>
+                            <div class="box">3</div>
+                            <div class="box">4</div>
+                            <div class="box">5</div>
+                            <div class="box">6</div>
+                            <div class="box">7</div>
+                        </div>
+                
+                <h3>flex-wrap: nowrap;</h3>
+                <div class="container-wrap-3">
+                        <div class="box">1</div>
+                        <div class="box">2</div>
+                        <div class="box">3</div>
+                        <div class="box">4</div>
+                        <div class="box">5</div>
+                        <div class="box">6</div>
+                        <div class="box">7</div>
+                    </div>
+
+            
+        </section>
+        
+        <hr>
+
+        <section class="main-section" id="Flex-shrink_Flex-grow">
+                <header><h2>Flex-shrink Flex-grow</h2></header>
+                <div class="container-section">
+                        <div class="container-text">
+                            <p><code>flex-shrink</code> toma un número (por defecto 1) y encoge el elemento según el número (2 se reduce a la mitad, 4 a un cuarto, etc), comparando con los items a su alrededor.</p>
+                            <p>Si hay espacio de sobra para que se extiendan todos los elementos en una misma línea, se va a ejecutar de forma incorrecta, nomás funcionando cuando se encoge y por un factor mucho más chico del que queríamos (por eso si defino <code>width: 33%;</code> no es tan evidente).</p>
+                            <p><code>flex-grow</code> en lugar de encogerlo, lo agranda, y para funcionar correctamente, el tamaño de los elementos no debe ocupar el 100% del width que pueden ocupar. Osea, todo al revés que el shrink (ej. no usar <code>width: 33%;</code>, sino <code>width:25%</code>).</p>
+                            <ul>
+                                <li><strong>OJO!</strong> La propiedad es para el item, no para el container que tiene el <code>display: flex</code>.</li>
+                                <li>Si puedo evitar usar <code>flex-grow</code> con medidas absolutas mejor porque es un dolor de cabeza. Probar cambiando el width de box-grow-1.</li>
+                                <li>También evitar poner muchos <code>flex-grow</code> o <code>flex-shrink</code> uno al lado del otro porque intentan relativizar sus tamaños entre sí y es un bardo.</li>
+                                <li>Debería usarlos sólo si hay <i>un</i> item rebelde que quiero que se diferencie de los demás (y que sea responsive).</li>
+                            </ul>
+                        </div>
+                    
+                <code class="container-code">
+                        <div class="code-class">.box:nth-child(2)</div> {<br>
+                        <div class="code-comment">/* Suponiendo un flexbox con 3 elementos, selecciono el segundo elemento */</div><br>
+                        <div class="code-atr">flex-shrink:</div> 2;<br>
+                        }<br>
+                        <br>
+                        <div class="code-class">.item-number-2</div> {<br>
+                            <div class="code-comment">/* Otra forma de hacerlo, creando una clase en el div del item a modificar */</div><br>
+                        <div class="code-atr">flex-shrink:</div> 2;<br>
+                            <br>
+                        <div class="code-class">.container-A .box:nth-child(2)</div> {<br>
+                            <div class="code-comment">/* OJO el width de .box!!! */</div>
+                        <div class="code-atr">flex-grow:</div> 4;<br>
+                        }
+                    </code>
+                    
+                </div>
+
+            <h3>flex-shrink: 20, width: 33%</h3>
+            <div class="container-shrink">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+            </div> 
+
+
+            <h3>flex-shrink: 3, width: 50%</h3>
+            <div class="container-flex">
+                    <div class="box">1</div>
+                    <div class="box-shrink-1">2</div>
+                    <div class="box">3</div>
+            </div>
+
+            <h3>flex-shrink: 8, width: 50%</h3>
+            <div class="container-flex">
+                    <div class="box">1</div>
+                    <div class="box-shrink-2">2</div>
+                    <div class="box">3</div>
+            </div>
+
+            <h3>flex-grow: 4, width: 20%</h3>
+            <div class="container-flex">
+                    <div class="box-grow-1">1</div>
+                    <div class="box-grow-1">2</div>
+                    <div class="box-grow-1">3</div>
+            </div>
+
+            <h3>flex-grow: 4, width: 30%</h3>
+            <div class="container-flex">
+                    <div class="box-grow-2">1</div>
+                    <div class="box-grow-2">2</div>
+                    <div class="box-grow-2">3</div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="main-section" id="Flex-direction">
+                <header><h2>Flex-direction</h2></header>
+                <div class="container-section">
+                        <div class="container-text">
+                            <p><code>Flex-direction</code> no tiene mucha vuelta. Define la dirección de los elementos, que vayan en el eje X (por defecto: <code>row</code>) o en el eje Y.</p>
+                            <p>También pueden revertirse la posición de todos los elementos en ambos ejes.</p>
+                            <p>El cambiar de Eje hace que también las propiedades <code>justify-content</code> y <code>align-items</code> se reviertan, ojo con eso. </align-items></p>
+                        </div>
+                    </div>
+
+
+            <h3>flex-direction: row-reverse</h3>
+            <div class="container-row-reverse">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+            </div>
+            <h3>flex-direction: column</h3>
+            <div class="container-column">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+            </div>
+
+        </section>
+
+        <hr>
+
+        <section class="main-section" id="Justify-content">
+            <header><h2>Justify-content</h2></header>
+            <div class="container-section">
+                    <div class="container-text">
+                        <p><code>justify-content: flex-start;</code> por defecto.</p>
+            
+                    </div>
+                </div>
+            <h3>justify-content: flex-end;</h3>
+            <div class="container-flex-1">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                    <div class="box">5</div>
+                    <div class="box">6</div>
+                </div>
+
+            <h3>justify-content: center;</h3>
+            <div class="container-flex-2">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                    <div class="box">5</div>
+                    <div class="box">6</div>
+                </div>
+
+            <h3>justify-content: space-around;</h3>
+            <div class="container-flex-3">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                    <div class="box">5</div>
+                    <div class="box">6</div>
+                </div>
+
+            <h3>justify-content: space-between;</h3>
+            <div class="container-flex-4">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                    <div class="box">5</div>
+                    <div class="box">6</div>
+                </div>
+
+            <h3>justify-content: space-evenly;</h3>
+            <div class="container-flex-5">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                    <div class="box">5</div>
+                    <div class="box">6</div>
+                </div>
+        </section>
+
+        <hr>
+
+        <section class="main-section" id="Align-items">
+            <header><h2>Align-items</h2></header>
+            <div class="container-section">
+                    <div class="container-text">
+                        <p><code>align-items: flex-start;</code> por defecto.</p>
+            
+                    </div>
+                </div>
+            <h3>align-items: flex-end;</h3>
+            <div class="container-flex-1">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                    <div class="box">5</div>
+                    <div class="box">6</div>
+                </div>
+
+            <h3>align-items: center;</h3>
+            <div class="container-flex-2">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                    <div class="box">5</div>
+                    <div class="box">6</div>
+                </div>
+
+            <h3>align-items: stretch;</h3>
+            <div class="container-flex-3">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                    <div class="box">5</div>
+                    <div class="box">6</div>
+                </div>
+
+            <h3>align-items: baseline;</h3>
+            <div class="container-flex-4">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                    <div class="box">5</div>
+                    <div class="box">6</div>
+                </div>
+        </section>
+
+        <hr>
+
+        <section class="main-section" id="Align-content">
+            <header><h2>Align-content</h2></header>
+            <div class="container-section">
+                <div class="container-text">
+                    <p>Para que <code>align-content</code> funcione, necesito tener a los items distribuidos en varias lineas (usando <code>flex-wrap</code>).</p> <p>Funciona de la misma forma que <code>justify-content</code> pero en vertical, distribuyendo a través de las diferentes "líneas" por las que se wrappean los elementos.</p>
+                    <ul>
+                        <li>En caso de no tener un <code>height</code> definido para los boxes, estos se distribuyen por todo el espacio que pueden a causa de esta propiedad, la cual por defecto está en <code>stretch</code>.</li>
+                        <li>Si uso <code>flex-direction: column;</code> esta propiedad pasa a comportarse como <code>justify-content</code> (y viceversa).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Align-content: stretch; (por defecto si los boxes no tienen height)</h3>
+            <div class="container-align-content-1">
+                <div class="box">1</div>
+                <div class="box">2</div>
+                <div class="box">3</div>
+                <div class="box">4</div>
+                <div class="box">5</div>
+                <div class="box">6</div>
+                <div class="box">7</div>
+                <div class="box">8</div>
+                <div class="box">9</div>
+            </div>
+            
+            <h3>Align-content: flex-end;</h3>
+            <div class="container-align-content-2">
+                <div class="box">1</div>
+                <div class="box">2</div>
+                <div class="box">3</div>
+                <div class="box">4</div>
+                <div class="box">5</div>
+                <div class="box">6</div>
+                <div class="box">7</div>
+                <div class="box">8</div>
+                <div class="box">9</div>
+            </div>
+
+            <h3>Align-content: center;</h3>
+            <div class="container-align-content-3">
+                <div class="box">1</div>
+                <div class="box">2</div>
+                <div class="box">3</div>
+                <div class="box">4</div>
+                <div class="box">5</div>
+                <div class="box">6</div>
+                <div class="box">7</div>
+                <div class="box">8</div>
+                <div class="box">9</div>
+            </div>
+            
+            <h3>Align-content: space-around;</h3>
+            <div class="container-align-content-4">
+                <div class="box">1</div>
+                <div class="box">2</div>
+                <div class="box">3</div>
+                <div class="box">4</div>
+                <div class="box">5</div>
+                <div class="box">6</div>
+                <div class="box">7</div>
+                <div class="box">8</div>
+                <div class="box">9</div>
+            </div>
+            
+            <h3>Align-content: space-between;</h3>
+            <div class="container-align-content-5">
+                <div class="box">1</div>
+                <div class="box">2</div>
+                <div class="box">3</div>
+                <div class="box">4</div>
+                <div class="box">5</div>
+                <div class="box">6</div>
+                <div class="box">7</div>
+                <div class="box">8</div>
+                <div class="box">9</div>
+            </div>
+            
+            <h3>Align-content: space-evenly;</h3>
+            <div class="container-align-content-6">
+                <div class="box">1</div>
+                <div class="box">2</div>
+                <div class="box">3</div>
+                <div class="box">4</div>
+                <div class="box">5</div>
+                <div class="box">6</div>
+                <div class="box">7</div>
+                <div class="box">8</div>
+                <div class="box">9</div>
+            </div>
+
+            </section>
+        
+            <hr>
+
+        <section class="main-section" id="Order_Align-self">
+            <header><h2>Order Align-self</h2></header>
+
+            <div class="container-section">
+                <div class="container-text">
+                    <p><code>order</code> permite reordenar los elementos dentro de un container. Por defecto, todos los elementos tienen <code>order: 0;</code>. Reasignar el order a cualquiera de los elementos cambiará su ubicación en el display.</p> <p>Reordenar con números positivos hará que el elemento se muestre más a la derecha, mientras que usar números negativos hará que el elemento se muestre más a la izquierda (porque se intentan reordenar con elementos sin un order definido, que por defecto toman el valor de 0).</p>
+                    <p><code>align-self</code> me permite hacer que un elemento específico ignore el <code>align-items</code> que le llega del container, alineandose a su manera.</p>
+                    <ul>
+                        <li>Ambas propiedades aplican para el item, no para el container con el <code>display: flex;</code>.</li>
+                        <li>Aunque no hace falta, <code>align-self</code> destaca más en casos en los que usamos también <code>align-items</code>.</li>
+                    </ul>
+                </div>
+
+                <code class="container-code">
+                    <div class="code-class">.box:nth-child(2)</div> {<br>
+                    <div class="code-atr">order:</div> -1;<br>
+                    } <br>
+                    <br>
+                    <div class="code-class">.container</div> {<br>
+                        <div class="code-atr">align-items</div> center;<br>
+                    }<br>
+                    <br>
+                    <div class="code-class">.box-2</div> {<br> 
+                    <div class="code-atr">align-self:</div> stretch;<br>
+                    }<br>
+                </code>
+            </div>
+
+            <h3>box-1 { Order: 1; }, box-8 { Order: -2; }, box-9 { Order: -1; }</h3>
+                <div class="container-flex">
+                     <div class="box">1</div>
+                        <div class="box">2</div>
+                        <div class="box">3</div>
+                        <div class="box">4</div>
+                        <div class="box">5</div>
+                        <div class="box">6</div>
+                        <div class="box">7</div>
+                        <div class="box">8</div>
+                        <div class="box">9</div>
+                    </div>
+
+                <h3>container { align-items: center; }, box-3 { align-self: stretch; }</h3>
+                <div class="container-align-self">
+                     <div class="box">1</div>
+                        <div class="box">2</div>
+                        <div class="box">3</div>
+                        <div class="box">4</div>
+                        <div class="box">5</div>
+                        <div class="box">6</div>
+                        <div class="box">7</div>
+                    </div>
+        </section>
+
+        <footer>
+            <p><a href="#main-doc">Volver arriba</a></p>
+            <p><a href="">volver al menu principal</a></p>
+            <p><a href="https://github.com/leodelgadodev" target="blank">👨‍💻 leodelgadodev - 2019</a></p>
+        </footer>
+    </div>
+
+    </main>
+</body>
+</html>
+
