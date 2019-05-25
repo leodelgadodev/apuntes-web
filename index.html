@@ -1,19 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Flexbox</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700i,800" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
 <body>
-    <h1>Apuntes web</h1>
+    <main id="main-doc">
+        <div class="sections">
+            <section class="main-section">
+            <!-- <div class="container-section"> -->
+        <h1>Apuntes web</h1>
+        
+        <a href="flexbox.html" class="btn-flexbox">CSS Flexbox</a>
+        <a href="" class="btn-grid">CSS Grid</a>
+        <a href="" class="btn-sass">SASS</a>
+        <a href="" class="btn-strap">Bootstrap</a>
+        <a href="" class="btn-css">Snippets CSS</a>
+        <a href="" class="btn-js">Snippets JS</a>
 
-        <a href="">CSS Flexbox</a>
-        <a href="">CSS Grid</a>
-        <a href="">SASS</a>
-        <a href="">Bootstrap</a>
-        <a href="">Snippets CSS</a>
-        <a href="">Snippets JS</a>
+
+        </section>
+    </div>
+    <footer>
+            <p><a href="https://github.com/leodelgadodev" target="blank">👨‍💻 leodelgadodev - 2019</a></p>
+        </footer>
+    </main>
 </body>
 </html>
+
+
+<style>
+
+    #main-doc {
+        display: block;
+        max-width: 80%;
+        margin: auto;
+    }
+
+    .sections {
+        max-width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    section {
+        margin: auto;
+    }
+
+    h1 {
+        font-family: Helvetica, monospace;
+        font-weight: 800;
+        font-size: 2em;
+
+        max-width: 80%;
+        text-align: center;
+        background-color: var(--main-color);
+        color: var(--quartz);
+        margin: 0px;
+        padding: 0.2em 3em;       
+    }
+
+    a {
+
+        font-family: Helvetica, monospace;
+        font-weight: 800;
+        font-size: 1em;
+        text-align: center;
+        display: block;
+        position: center;
+        margin: 1em auto;
+        padding-top: 1.5em !important;
+        padding-bottom: 1.5em !important;
+        width: 100%;
+
+        color: var(--quartz);
+        text-decoration: none;
+        }
+
+    a:hover {
+        position: center;
+        width: 100%;
+        /* padding-top: 1.5em;
+        padding-bottom: 1.5em; */
+        font-weight: 800;
+        
+        background-color: var(--fourth-color);
+        color: var(--quartz);
+    }
+
+    .btn-flexbox {
+        background-color: var(--main-color);
+        transform: scale(1.2,1.2)
+    }
+
+    .btn-grid {
+        background-color: blueviolet;
+    }
+
+    .btn-sass {
+        background-color: var(--second-color);
+    }
+
+    .btn-strap {
+        background-color: green;
+    }
+    
+    .btn-css {
+        background-color: var(--third-color);
+    }
+
+    .btn-js {
+        background-color: tomato;
+    }
+
+    .btn-grid, .btn-sass, .btn-strap, .btn-css, .btn-js {
+         text-decoration: line-through;
+    }
+
+</style>
